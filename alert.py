@@ -4,8 +4,8 @@ import os
 from datetime import datetime
 
 # ================== CONFIG ==================
-BOT_TOKEN = os.getenv("8249959090:AAHdThfMmhwZ3q82g9I1PN9h74Adb06qfZY")
-CHAT_ID = os.getenv("434700851")
+BOT_TOKEN = os.getenv("BOT_TOKEN")
+CHAT_ID = os.getenv("CHAT_ID")
 LAST_ALERT_FILE = "last_alert.txt"   # GitHub automatically persists this file
 
 # Your exact thresholds from the table
@@ -22,8 +22,8 @@ THRESHOLDS = {
 }
 
 def send_telegram(msg):
-    url = f"https://api.telegram.org/bot{8249959090:AAHdThfMmhwZ3q82g9I1PN9h74Adb06qfZY}/sendMessage"
-    requests.post(url, json={"chat_id": 434700851, "text": msg, "parse_mode": "HTML"})
+    url = f"https://api.telegram.org/bot{BOT_TOKEN}/sendMessage"
+    requests.post(url, json={"chat_id": CHAT_ID, "text": msg, "parse_mode": "HTML"})
 
 def load_last_state():
     try:
