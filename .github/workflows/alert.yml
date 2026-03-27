@@ -1,0 +1,26 @@
+name: Stock Bottom-Fishing Alert System
+
+on:
+  schedule:
+    - cron: '*/15 * * * *'   # every 15 minutes (change to */5 if you want)
+  workflow_dispatch:        # allows manual trigger for testing
+
+jobs:
+  run-alert:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: pip install yfinance requests
+
+      - name: Run Alert Script
+        env:
+          BOT_TOKEN: ${{ secrets.happybottomfishing_bot }}
+          CHAT_ID: ${{ secrets.434700851 }}
+        run: python alert.py
