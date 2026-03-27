@@ -2,13 +2,13 @@ name: Stock Bottom-Fishing Alert System
 
 on:
   schedule:
-    - cron: '*/15 * * * *'   # every 15 minutes
-  workflow_dispatch:        # manual trigger
+    - cron: '*/5 * * * *'   # every 5 minutes (24/7)
+  workflow_dispatch:        # allows manual trigger
 
 jobs:
   run-alert:
     runs-on: ubuntu-latest
-    env:                       # ← NEW LINE (this fixes the warning)
+    env:                       # fixes the Node.js 20 deprecation warning
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
     
     steps:
