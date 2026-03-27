@@ -21,6 +21,6 @@ jobs:
 
       - name: Run Alert Script
         env:
-          BOT_TOKEN: ${{ secrets.happybottomfishing_bot }}
-          CHAT_ID: ${{ secrets.434700851 }}
+          BOT_TOKEN: ${{ secrets.BOT_TOKEN }}
+          CHAT_ID: ${{ secrets.CHAT_ID }}
         run: python alert.py
