@@ -2,12 +2,15 @@ name: Stock Bottom-Fishing Alert System
 
 on:
   schedule:
-    - cron: '*/15 * * * *'   # every 15 minutes (change to */5 if you want)
-  workflow_dispatch:        # allows manual trigger for testing
+    - cron: '*/15 * * * *'   # every 15 minutes
+  workflow_dispatch:        # manual trigger
 
 jobs:
   run-alert:
     runs-on: ubuntu-latest
+    env:                       # ← NEW LINE (this fixes the warning)
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+    
     steps:
       - uses: actions/checkout@v4
 
